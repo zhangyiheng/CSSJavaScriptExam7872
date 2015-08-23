@@ -21,51 +21,66 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<link type="text/css" rel="stylesheeet" href="css/bootstrap.min.css">
+	<style>
+		.leftdiv{
+			float: left;
+			width: 10%;
+		}
+		.user{
+			float: left
+		}
+	</style>
   </head>
   
   <body>
 	<div>
 		<div class="head" style="height: 50px;width: auto;">
-			7872:张艺亨
+			<p>7872:张艺亨</p>
+			<div class="user"></div>
 		</div>
-		<div class="container">
-			<ul class="nav nav-pills nav-stacked">
-				<li><a href="#">Customer管理</a></li>
-				<li><a href="#">Film設置</a></li>
-			</ul>
-			<table border="1px">
-				<tr><td>操作</td><td>First Name</td><td>Last Name</td><td>Address</td><td>Email</td><td>CustomerId</td><td>LastUpdate</td></tr>
-				<%
-					ResultSet rs = (ResultSet)session.getAttribute("result");
-					while(rs.next()){
-						out.print("<tr>");
-	  		 			out.print("<td>");
-	  		 			out.print("<a href='#' name = 'bianji'>编辑</a>"+"|"+
-	  		 			"<a href='#' name = '删除'>删除</a>");
-	  		 			out.print("</td>");
-	  		 			out.print("<td>");
-	  		 			out.print(rs.getString("first_name"));
-	  		 			out.print("</td>");
-	  		 			out.print("<td>");
-	  		 			out.print(rs.getString("last_name"));
-	  		 			out.print("</td>");
-	  		 			out.print("<td>");
-	  		 			out.print(rs.getString("address"));
-	  		 			out.print("</td>");
-	  		 			out.print("<td>");
-	  		 			out.print(rs.getString("email"));
-	  		 			out.print("</td>");
-	  		 			out.print("<td>");
-	  		 			out.print(rs.getInt("customer_id"));
-	  		 			out.print("</td>");
-	  		 			out.print("<td>");
-	  		 			out.print(rs.getDate("last_update"));
-	  		 			out.print("</td>");
-	  					out.print("</tr>");
-					
-					}
-				 %>
-			</table>
+		<div class="container" >
+			<div class="leftdiv" border="1px">
+				<ul class="nav nav-pills nav-stacked" >
+					<li><a href="#">Customer管理</a></li>
+					<li><a href="#">Film設置</a></li>
+				</ul>
+			</div>
+			<div class="rightdiv">
+				<table border="1px">
+					<tr><td colspan="7"  align="center">客户管理<button type="button" href="insert.jsp"><a href="insert.jsp">添加</a></button></td></tr>
+					<tr><td>操作</td><td>First Name</td><td>Last Name</td><td>Address</td><td>Email</td><td>CustomerId</td><td>LastUpdate</td></tr>
+					<%
+						ResultSet rs = (ResultSet)session.getAttribute("result");
+						while(rs.next()){
+							out.print("<tr>");
+		  		 			out.print("<td>");
+		  		 			out.print("<a href='#' name = 'bianji'>编辑</a>"+"|"+
+		  		 			"<a href='#' name = '删除'>删除</a>");
+		  		 			out.print("</td>");
+		  		 			out.print("<td>");
+		  		 			out.print(rs.getString("first_name"));
+		  		 			out.print("</td>");
+		  		 			out.print("<td>");
+		  		 			out.print(rs.getString("last_name"));
+		  		 			out.print("</td>");
+		  		 			out.print("<td>");
+		  		 			out.print(rs.getString("address"));
+		  		 			out.print("</td>");
+		  		 			out.print("<td>");
+		  		 			out.print(rs.getString("email"));
+		  		 			out.print("</td>");
+		  		 			out.print("<td>");
+		  		 			out.print(rs.getInt("customer_id"));
+		  		 			out.print("</td>");
+		  		 			out.print("<td>");
+		  		 			out.print(rs.getDate("last_update"));
+		  		 			out.print("</td>");
+		  					out.print("</tr>");
+						
+						}
+					 %>
+				</table>
+			</div>
 		</div>
 	</div>
   </body>
